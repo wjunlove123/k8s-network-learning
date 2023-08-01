@@ -15,8 +15,8 @@ nodes:
 
 containerdConfigPatches:
 - |-
-  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."192.168.2.100:5000"]
-    endpoint = ["http://192.168.2.100:5000"]
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."111.230.110.182:5000"]
+    endpoint = ["http://111.230.110.182:5000"]
 EOF
 
 ontroller_node_ip=`kubectl get node -o wide --no-headers | grep -E "control-plane|bpf1" | awk -F " " '{print $6}'`
@@ -27,5 +27,5 @@ kubectl get nodes -o wide
 kubectl apply -f calico.yaml
 
 # 4. wait all pods ready
-kubectl wait --timeout=100s --for=condition=Ready=true pods --all -A
+#kubectl wait --timeout=100s --for=condition=Ready=true pods --all -A
 

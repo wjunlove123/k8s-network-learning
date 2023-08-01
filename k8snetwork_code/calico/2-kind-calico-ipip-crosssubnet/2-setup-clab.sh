@@ -7,13 +7,13 @@ ifconfig br-pool0 up
 brctl addbr br-pool1
 ifconfig br-pool1 up
 
-cat <<EOF>clab.yaml | clab deploy -t clab.yaml -
+cat <<EOF>clab.yaml | containerlab deploy -t clab.yaml -
 name: calico-ipip-crosssubnet
 topology:
   nodes:
     gw0:
       kind: linux
-      image: 192.168.2.100:5000/vyos/vyos:1.2.8
+      image: 111.230.110.182:5000/vyos:1.2.8
       cmd: /sbin/init
       binds:
         - /lib/modules:/lib/modules
@@ -27,7 +27,7 @@ topology:
 
     server1:
       kind: linux
-      image: 192.168.2.100:5000/nettool
+      image: 111.230.110.182:5000/nettool:v1.0
       network-mode: container:control-plane
       exec:
       - ip addr add 10.1.5.10/24 dev net0
@@ -35,7 +35,7 @@ topology:
 
     server2:
       kind: linux
-      image: 192.168.2.100:5000/nettool
+      image: 111.230.110.182:5000/nettool:v1.0
       network-mode: container:worker
       exec:
       - ip addr add 10.1.5.11/24 dev net0
@@ -43,7 +43,7 @@ topology:
 
     server3:
       kind: linux
-      image: 192.168.2.100:5000/nettool
+      image: 111.230.110.182:5000/nettool:v1.0
       network-mode: container:worker2
       exec:
       - ip addr add 10.1.8.10/24 dev net0
@@ -51,7 +51,7 @@ topology:
 
     server4:
       kind: linux
-      image: 192.168.2.100:5000/nettool
+      image: 111.230.110.182:5000/nettool:v1.0
       network-mode: container:worker3
       exec:
       - ip addr add 10.1.8.11/24 dev net0

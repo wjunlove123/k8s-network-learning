@@ -48,8 +48,8 @@ nodes:
 
 containerdConfigPatches:
 - |-
-  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."192.168.2.100:5000"]
-    endpoint = ["http://192.168.2.100:5000"]
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."111.230.110.182:5000"]
+    endpoint = ["http://111.230.110.182:5000"]
 EOF
 
 # 2.remove taints
